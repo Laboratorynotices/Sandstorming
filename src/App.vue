@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
+import { useI18n } from "vue-i18n";
+
+const { locale } = useI18n();
+
+function switchLocale() {
+  locale.value = locale.value === "de" ? "ru" : "de";
+}
 </script>
 
 <template>
+  <div>
+    <p>{{ $t("hello") }}</p>
+    <button @click="switchLocale">Switch language</button>
+  </div>
   <div>
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
