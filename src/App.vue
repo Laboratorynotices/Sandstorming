@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SiteHeader from "./components/SiteHeader.vue";
+import SiteHeader from "./components/SiteHeader/SiteHeader.vue";
 import SitePhrase from "./components/SitePhrase.vue";
 import SiteAbout from "./components/SiteAbout.vue";
 import SiteActivities from "./components/SiteActivities.vue";

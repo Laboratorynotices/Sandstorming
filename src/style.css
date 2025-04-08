@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Ограничиваем ширину контейнера */
+.wrap-container {
+  @apply m-2;
+}
