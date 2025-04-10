@@ -21,20 +21,20 @@ defineEmits(["click"]);
     <div class="w-6 h-5 relative">
       <!-- Верхняя полоска -->
       <span
-        class="absolute top-0 left-0 w-full h-0.5 bg-black rounded-sm transition-all origin-[left_center] duration-300"
-        :style="isOpen ? 'transform: rotate(45deg);' : ''"
+        class="absolute top-0 left-0 w-full h-0.5 bg-text rounded-sm transition-all origin-[left_center] duration-300"
+        :class="isOpen ? 'rotate-45' : ''"
       ></span>
 
       <!-- Средняя полоска -->
       <span
-        class="absolute top-2 left-0 w-full h-0.5 bg-black rounded-sm transition-opacity duration-300"
-        :style="isOpen ? 'opacity: 0;' : ''"
+        class="absolute top-2 left-0 w-full h-0.5 bg-text rounded-sm transition-opacity duration-300"
+        :class="isOpen ? 'opacity-0' : ''"
       ></span>
 
       <!-- Нижняя полоска -->
       <span
-        class="absolute top-4 left-0 w-full h-0.5 bg-black rounded-sm transition-all origin-[left_center] duration-300"
-        :style="isOpen ? 'transform: rotate(-45deg);' : ''"
+        class="absolute top-4 left-0 w-full h-0.5 bg-text rounded-sm transition-all origin-[left_center] duration-300"
+        :class="isOpen ? '-rotate-45' : ''"
       ></span>
     </div>
   </button>

@@ -119,7 +119,7 @@ onUnmounted(() => {
     <!-- Правая часть - кнопка для звонка -->
     <div>
       <button
-        class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary hover:text-white transition duration-300"
+        class="px-4 py-2 rounded border border-primary text-primary hover:bg-primary hover:text-background transition duration-300"
       >
         Позвонить
       </button>
