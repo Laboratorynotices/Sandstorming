@@ -81,37 +81,14 @@ onUnmounted(() => {
       <!-- Кнопка-гамбургер (видна только на мобильных) -->
       <BurgerButton :is-open="isMenuOpen" @click="toggleMenu" />
 
-      <!-- Общий контейнер для навигации, который адаптируется
+      <!-- Контейнер для навигации, который адаптируется
            в зависимости от текущего режима (мобильный/десктоп) -->
-      <div
-        id="nav-container"
-        :class="[
-          // Базовые стили применяются всегда
-          '',
-
-          // На пару секунд скрываем меню при переходе с десктопа на мобильный
-          hideMenu ? 'hidden' : '',
-
-          // Условные стили для мобильной версии
-          isMobile
-            ? 'fixed left-0 right-0 top-0 bg-background z-10 pt-16 p-4 transition-all duration-300 ease-in-out'
-            : 'relative',
-
-          // Анимация появления/скрытия только для мобильной версии
-          isMobile
-            ? // Актуально только для мобильной версии
-              isMenuOpen
-              ? // Если меню открыто, показываем его с анимацией
-                'transform translate-y-0 shadow-lg'
-              : // Если меню закрыто, скрываем его с анимацией
-                'transform -translate-y-full'
-            : // Для десктопной версии просто показываем меню
-              '',
-        ]"
-      >
-        <!-- Навигационные ссылки (один компонент для обоих режимов) -->
-        <NavLinks @link-clicked="closeMenu" />
-      </div>
+      <NavLinks
+        :hideMenu="hideMenu"
+        :isMobile="isMobile"
+        :isMenuOpen="isMenuOpen"
+        @link-clicked="closeMenu"
+      />
     </div>
 
     <!-- Правая часть - кнопка для звонка -->

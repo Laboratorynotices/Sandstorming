@@ -15,23 +15,23 @@ defineProps({
       aria-label="Меню"
     >
       <!-- Три полоски, которые превращаются в крестик -->
-      <div class="w-6 h-5 relative">
+      <div class="w-6 h-6 flex flex-col justify-between">
         <!-- Верхняя полоска -->
         <span
-          class="absolute top-0 left-0 w-full h-0.5 bg-text rounded-sm transition-all origin-[left_center] duration-300"
-          :class="isOpen ? 'rotate-45' : ''"
+          class="h-0.5 bg-text rounded-sm transition-all origin-[left_center] duration-300"
+          :class="isOpen ? 'rotate-45 w-[130%]' : 'w-full'"
         ></span>
 
         <!-- Средняя полоска -->
         <span
-          class="absolute top-2 left-0 w-full h-0.5 bg-text rounded-sm transition-opacity duration-300"
+          class="w-full h-0.5 bg-text rounded-sm transition-opacity duration-300"
           :class="isOpen ? 'opacity-0' : ''"
         ></span>
 
         <!-- Нижняя полоска -->
         <span
-          class="absolute top-4 left-0 w-full h-0.5 bg-text rounded-sm transition-all origin-[left_center] duration-300"
-          :class="isOpen ? '-rotate-45' : ''"
+          class="h-0.5 bg-text rounded-sm transition-all origin-[left_center] duration-300"
+          :class="isOpen ? '-rotate-45 w-[130%]' : 'w-full'"
         ></span>
       </div>
     </button>

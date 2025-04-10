@@ -1,6 +1,19 @@
 <script setup lang="ts">
-// Определяем события
-const emit = defineEmits(["linkClicked"]);
+// Определяем пропсы для компонента
+defineProps({
+  hideMenu: {
+    type: Boolean,
+    required: true,
+  },
+  isMobile: {
+    type: Boolean,
+    required: true,
+  },
+  isMenuOpen: {
+    type: Boolean,
+    required: true,
+  },
+});
 
 // Массив пунктов меню
 const navItems = [
@@ -9,23 +22,45 @@ const navItems = [
   { id: 3, name: "activities", path: "/activities" },
   { id: 4, name: "review", path: "/review" },
 ];
-
-// Функция для обработки клика по ссылке
-const handleLinkClick = () => {
-  emit("linkClicked");
-};
 </script>
 
 <template>
-  <ul class="md:flex md:space-x-6">
-    <li v-for="item in navItems" :key="item.id" class="mb-4 md:mb-0">
-      <a
-        :href="item.path"
-        @click="handleLinkClick"
-        class="text-primary hover:text-primary-light transition-colors duration-300 block py-2 md:py-0"
-      >
-        {{ $t(item.name) }}
-      </a>
-    </li>
-  </ul>
+  <div
+    id="nav-container"
+    :class="[
+      // Базовые стили применяются всегда
+      '',
+
+      // На пару секунд скрываем меню при переходе с десктопа на мобильный
+      hideMenu ? 'hidden' : '',
+
+      // Условные стили для мобильной версии
+      isMobile
+        ? 'fixed left-0 right-0 top-0 bg-background z-10 pt-16 p-4 transition-all duration-300 ease-in-out'
+        : 'relative',
+
+      // Анимация появления/скрытия только для мобильной версии
+      isMobile
+        ? // Актуально только для мобильной версии
+          isMenuOpen
+          ? // Если меню открыто, показываем его с анимацией
+            'transform translate-y-0 shadow-lg'
+          : // Если меню закрыто, скрываем его с анимацией
+            'transform -translate-y-full'
+        : // Для десктопной версии просто показываем меню
+          '',
+    ]"
+  >
+    <!-- Навигационные ссылки (один компонент для обоих режимов) -->
+    <ul class="md:flex md:space-x-6">
+      <li v-for="item in navItems" :key="item.id" class="mb-4 md:mb-0">
+        <a
+          :href="item.path"
+          class="text-primary hover:text-primary-light transition-colors duration-300 block py-2 md:py-0"
+        >
+          {{ $t(item.name) }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </template>
