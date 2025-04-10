@@ -79,9 +79,7 @@ onUnmounted(() => {
     <!-- Левая часть - кнопка-гамбургер и/или навигация -->
     <div class="flex items-center relative">
       <!-- Кнопка-гамбургер (видна только на мобильных) -->
-      <div id="burger-button" class="md:hidden z-20">
-        <BurgerButton :is-open="isMenuOpen" @click="toggleMenu" />
-      </div>
+      <BurgerButton :is-open="isMenuOpen" @click="toggleMenu" />
 
       <!-- Общий контейнер для навигации, который адаптируется
            в зависимости от текущего режима (мобильный/десктоп) -->
