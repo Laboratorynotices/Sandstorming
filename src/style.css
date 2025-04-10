@@ -1,6 +1,72 @@
 @import "tailwindcss";
 
+/* Определение переменных */
+@theme {
+  /* Light Theme */
+  --color-primary: #0a507a;
+  --color-primary-light: #157ab3;
+
+  --color-background: #ffffff;
+  --color-text: #2b2a29;
+
+  --color-border-accent: #000000;
+  --color-muted: rgba(255, 255, 255, 0.2);
+  --color-overlay: rgba(255, 255, 255, 0.3);
+
+  /* Dark Theme */
+  --color-primary-dark: #4ca4d8;
+  --color-primary-light-dark: #66b7e5;
+
+  --color-background-dark: #1a1a1a;
+  --color-text-dark: #ffffff;
+
+  --color-border-accent-dark: #ffffff;
+  --color-muted-dark: rgba(43, 42, 41, 0.2);
+  --color-overlay-dark: rgba(43, 42, 41, 0.3);
+}
+
+/* Определение основных стилей */
+@layer base {
+  /*************************************************/
+  /* Определение классов для светлой и темной темы */
+  /*************************************************/
+  /* Светлая тема (по умолчанию) */
+  @media (prefers-color-scheme: light) {
+    body {
+      @apply bg-background text-text;
+    }
+  }
+
+  /* Темная тема */
+  @media (prefers-color-scheme: dark) {
+    body {
+      @apply bg-background-dark text-text-dark;
+    }
+  }
+}
+
 /* Ограничиваем ширину контейнера */
 .wrap-container {
-  @apply m-2;
+  @apply p-2;
+}
+
+header {
+  background-image: url("./assets/images/background-main.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/***************************************************************
+  ************ Стили для кнопки "Гамбургер" и меню *************
+  ***************************************************************/
+
+/* Стили для линий гамбургера */
+.hamburger-line {
+  @apply bg-text;
+}
+
+/* Мобильная версия (Mobile First) */
+.nav {
+  @apply bg-background;
 }
