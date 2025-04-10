@@ -25,12 +25,11 @@ const navItems = [
 </script>
 
 <template>
-  <div
+  <!-- Навигационные ссылки (один компонент для обоих режимов) -->
+  <ul
     id="nav-container"
+    class="md:flex md:space-x-6"
     :class="[
-      // Базовые стили применяются всегда
-      '',
-
       // На пару секунд скрываем меню при переходе с десктопа на мобильный
       hideMenu ? 'hidden' : '',
 
@@ -51,16 +50,13 @@ const navItems = [
           '',
     ]"
   >
-    <!-- Навигационные ссылки (один компонент для обоих режимов) -->
-    <ul class="md:flex md:space-x-6">
-      <li v-for="item in navItems" :key="item.id" class="mb-4 md:mb-0">
-        <a
-          :href="item.path"
-          class="text-primary hover:text-primary-light transition-colors duration-300 block py-2 md:py-0"
-        >
-          {{ $t(item.name) }}
-        </a>
-      </li>
-    </ul>
-  </div>
+    <li v-for="item in navItems" :key="item.id" class="mb-4 md:mb-0">
+      <a
+        :href="item.path"
+        class="text-primary hover:text-primary-light transition-colors duration-300 block py-2 md:py-0"
+      >
+        {{ $t(item.name) }}
+      </a>
+    </li>
+  </ul>
 </template>
