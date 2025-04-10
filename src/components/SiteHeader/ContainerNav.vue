@@ -3,8 +3,16 @@ import { ref, onMounted, onUnmounted } from "vue";
 import NavLinks from "./NavLinks.vue";
 import BurgerButton from "./BurgerButton.vue";
 
+// Ширина экрана для MD версии
+// @TODO: вынести в конфиг и "привязать" в настройках tailwind
+const MD_BREAKPOINT = 768;
+
 // Состояние для отслеживания открытия/закрытия мобильного меню
 const isMenuOpen = ref(false);
+// Состояние для отслеживания видимости меню (для перехода из десктопа в мобильный)
+const hideMenu = ref(false);
+// Флаг для отслеживания текущего состояния отображения (мобильное/десктопное)
+const isMobile = ref(window.innerWidth < MD_BREAKPOINT);
 
 // Функция для переключения состояния мобильного меню
 const toggleMenu = () => {
@@ -13,23 +21,36 @@ const toggleMenu = () => {
 
 // Функция для закрытия меню
 const closeMenu = () => {
-  isMenuOpen.value = false;
+  if (isMenuOpen.value) {
+    isMenuOpen.value = false;
+  }
 };
 
 // Функция для определения текущего размера экрана
 const checkScreenSize = () => {
-  // Если переходим на десктоп с открытым мобильным меню, закрываем его
-  if (window.innerWidth >= 768 && isMenuOpen.value) {
+  const wasMobile = isMobile.value;
+  isMobile.value = window.innerWidth < MD_BREAKPOINT;
+
+  // Если переходим с мобильного на десктоп с открытым мобильным меню, закрываем его
+  if (wasMobile && !isMobile.value && isMenuOpen.value) {
     isMenuOpen.value = false;
+  }
+
+  if (!wasMobile && isMobile.value) {
+    // Если переходим с десктопа на мобильный, скрываем меню на пару секунд
+    hideMenu.value = true;
+    setTimeout(() => {
+      hideMenu.value = false;
+    }, 300); // Время задержки перед показом меню
   }
 };
 
 // Обработчик клика вне меню для его закрытия
 const handleClickOutside = (event: MouseEvent) => {
-  const navElement = document.getElementById("mobile-nav");
+  const navElement = document.getElementById("nav-container");
   const burgerButton = document.getElementById("burger-button");
 
-  if (isMenuOpen.value && navElement && burgerButton) {
+  if (isMenuOpen.value && isMobile.value && navElement && burgerButton) {
     if (
       !navElement.contains(event.target as Node) &&
       !burgerButton.contains(event.target as Node)
@@ -41,6 +62,7 @@ const handleClickOutside = (event: MouseEvent) => {
 
 // Установка слушателей событий при монтировании компонента
 onMounted(() => {
+  checkScreenSize(); // Проверяем начальное состояние
   window.addEventListener("resize", checkScreenSize);
   document.addEventListener("click", handleClickOutside);
 });
@@ -54,16 +76,43 @@ onUnmounted(() => {
 
 <template>
   <nav class="flex justify-between items-center w-full">
-    <!-- Левая часть - меню или кнопка-гамбургер -->
-    <div class="flex items-center">
-      <!-- Мобильная версия: кнопка-гамбургер -->
+    <!-- Левая часть - кнопка-гамбургер и/или навигация -->
+    <div class="flex items-center relative">
+      <!-- Кнопка-гамбургер (видна только на мобильных) -->
       <div id="burger-button" class="md:hidden z-20">
         <BurgerButton :is-open="isMenuOpen" @click="toggleMenu" />
       </div>
 
-      <!-- Десктопная версия: горизонтальное меню -->
-      <div class="hidden md:block">
-        <NavLinks />
+      <!-- Общий контейнер для навигации, который адаптируется
+           в зависимости от текущего режима (мобильный/десктоп) -->
+      <div
+        id="nav-container"
+        :class="[
+          // Базовые стили применяются всегда
+          '',
+
+          // На пару секунд скрываем меню при переходе с десктопа на мобильный
+          hideMenu ? 'hidden' : '',
+
+          // Условные стили для мобильной версии
+          isMobile
+            ? 'fixed left-0 right-0 top-0 bg-background z-10 pt-16 p-4 transition-all duration-300 ease-in-out'
+            : 'relative',
+
+          // Анимация появления/скрытия только для мобильной версии
+          isMobile
+            ? // Актуально только для мобильной версии
+              isMenuOpen
+              ? // Если меню открыто, показываем его с анимацией
+                'transform translate-y-0 shadow-lg'
+              : // Если меню закрыто, скрываем его с анимацией
+                'transform -translate-y-full'
+            : // Для десктопной версии просто показываем меню
+              '',
+        ]"
+      >
+        <!-- Навигационные ссылки (один компонент для обоих режимов) -->
+        <NavLinks @link-clicked="closeMenu" />
       </div>
     </div>
 
@@ -74,21 +123,6 @@ onUnmounted(() => {
       >
         Позвонить
       </button>
-    </div>
-
-    <!-- Мобильное меню -->
-    <div
-      id="mobile-nav"
-      class="fixed inset-x-0 top-0 z-10 bg-white transition-transform duration-300"
-      :class="
-        isMenuOpen
-          ? 'transform translate-y-0 shadow-lg'
-          : 'transform -translate-y-full'
-      "
-    >
-      <div class="pt-16 p-4">
-        <NavLinks @link-clicked="closeMenu" />
-      </div>
     </div>
   </nav>
 </template>
