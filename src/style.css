@@ -47,7 +47,7 @@
 
 /* Ограничиваем ширину контейнера */
 .wrap-container {
-  @apply m-2;
+  @apply mx-2 mb-2 pt-2;
 }
 
 header {
