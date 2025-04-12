@@ -45,6 +45,6 @@ const variantClasses = computed(() => {
 <style lang="css">
 .call {
   font-size: clamp(12px, 2vw, 20px);
-  padding: clamp(6px, 2vw, 10px) clamp(12px, 2vw, 20px);
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 20px);
 }
 </style>
