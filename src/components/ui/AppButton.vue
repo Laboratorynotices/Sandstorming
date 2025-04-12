@@ -19,13 +19,13 @@ const asComputed = computed(() => {
 });
 
 // Общие классы для всех вариантов кнопки
-const baseClasses = "px-2 rounded-full flex items-center";
+const baseClasses = "rounded-full flex items-center";
 
 // Классы для конкретного варианта кнопки
 const variantClasses = computed(() => {
   switch (props.variant) {
     case ButtonVariant.Call:
-      return "bg-primary text-background font-bold call";
+      return "bg-primary gap-2.5 text-background font-bold call";
     default:
       return "";
   }
@@ -45,5 +45,6 @@ const variantClasses = computed(() => {
 <style lang="css">
 .call {
   font-size: clamp(12px, 2vw, 20px);
+  padding: clamp(6px, 2vw, 10px) clamp(12px, 2vw, 20px);
 }
 </style>
