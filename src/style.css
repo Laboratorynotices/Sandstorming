@@ -49,3 +49,10 @@
 .wrap-container {
   @apply m-2;
 }
+
+header {
+  @apply bg-[url("./assets/images/background-main.png")] 
+    bg-no-repeat 
+    bg-cover
+    bg-center;
+}
