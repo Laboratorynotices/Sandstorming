@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import { ButtonVariant } from "../../constants/button";
+import AppButton from "../ui/AppButton.vue";
 import NavLinks from "./NavLinks.vue";
 import BurgerButton from "./BurgerButton.vue";
 // Ширина экрана для MD версии
@@ -46,19 +48,26 @@ const checkScreenSize = () => {
     */
   }
 };
+
 // Обработчик клика вне меню для его закрытия
 const handleClickOutside = (event: MouseEvent) => {
-  const navElement = document.getElementById("nav-container");
+  const navContainer = ref<HTMLElement | null>(null);
+  // На ref поменять нельзя, поскольку он должен будет ссылаться на дочерний элемент
   const burgerButton = document.getElementById("burger-button");
-  if (isMenuOpen.value && isMobile.value && navElement && burgerButton) {
+
+  // Проверяем, что клик был вне меню и кнопки-гамбургера
+  // и что меню открыто и мы на мобильном устройстве
+  if (isMenuOpen.value && isMobile.value && navContainer && burgerButton) {
+    // Если клик был вне меню и кнопки-гамбургера, закрываем меню
     if (
-      !navElement.contains(event.target as Node) &&
+      !navContainer.value?.contains(event.target as Node) &&
       !burgerButton.contains(event.target as Node)
     ) {
       closeMenu();
     }
   }
 };
+
 // Установка слушателей событий при монтировании компонента
 onMounted(() => {
   checkScreenSize(); // Проверяем начальное состояние
@@ -73,12 +82,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <nav class="nav-container flex justify-between items-center w-full">
+  <nav
+    ref="navContainer"
+    class="nav-container flex justify-between items-center w-full"
+  >
     <!-- Навигационное меню -->
     <!-- Левая часть - кнопка-гамбургер и/или навигация -->
     <div class="flex items-center relative">
       <!-- Кнопка-гамбургер (видна только на мобильных) -->
-      <BurgerButton :is-open="isMenuOpen" @click="toggleMenu" />
+      <BurgerButton
+        ref="burgerButton"
+        :is-open="isMenuOpen"
+        @click="toggleMenu"
+      />
 
       <!-- Контейнер для навигации, который адаптируется
            в зависимости от текущего режима (мобильный/десктоп) -->
@@ -91,6 +107,8 @@ onUnmounted(() => {
     </div>
 
     <!-- Правая часть - Кнопка телефонного звонка -->
-    <div>Телефон</div>
+    <AppButton :variant="ButtonVariant.Call" href="tel:+201001234567"
+      >+20 100 123 4567</AppButton
+    >
   </nav>
 </template>
