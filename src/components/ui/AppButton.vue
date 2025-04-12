@@ -19,7 +19,7 @@ const asComputed = computed(() => {
 });
 
 // Общие классы для всех вариантов кнопки
-const baseClasses = "px-2 rounded-full";
+const baseClasses = "px-2 rounded-full flex items-center";
 
 // Классы для конкретного варианта кнопки
 const variantClasses = computed(() => {
