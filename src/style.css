@@ -69,3 +69,15 @@ header {
     bg-cover
     bg-center;
 }
+
+/* Элемент важен для SEO, но не должен отображаться на экране */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
