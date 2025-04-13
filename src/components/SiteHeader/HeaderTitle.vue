@@ -11,6 +11,6 @@
 
 <style lang="css" scoped>
 img {
-  margin: clamp(1.5rem, 3vw, 5rem) auto;
+  margin: clamp(1.5rem, 3vw, 5rem) auto clamp(0.5rem, 1vw, 2rem);
 }
 </style>

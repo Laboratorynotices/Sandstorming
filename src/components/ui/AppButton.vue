@@ -19,13 +19,17 @@ const asComputed = computed(() => {
 });
 
 // Общие классы для всех вариантов кнопки
-const baseClasses = "rounded-full flex items-center";
+const baseClasses = "rounded-full items-center";
 
 // Классы для конкретного варианта кнопки
 const variantClasses = computed(() => {
   switch (props.variant) {
     case ButtonVariant.Call:
-      return "bg-primary gap-2.5 text-background font-bold call";
+      return "bg-primary gap-2.5 text-background flex font-bold call";
+    case ButtonVariant.Header1:
+      return "bg-text text-background header1";
+    case ButtonVariant.Header2:
+      return "bg-overlay text-primary border-primary border-1 px-5 py-2.5 inline-block header2";
     default:
       return "";
   }
@@ -46,5 +50,9 @@ const variantClasses = computed(() => {
 .call {
   font-size: clamp(12px, 2vw, 20px);
   padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 20px);
+}
+.header1 {
+  font-size: clamp(12px, 2vw, 14px);
+  padding: clamp(2px, 1vw, 4px) clamp(4px, 2vw, 8px);
 }
 </style>

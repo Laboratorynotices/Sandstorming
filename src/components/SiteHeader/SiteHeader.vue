@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ContainerNav from "./ContainerNav.vue";
 import HeaderTitle from "./HeaderTitle.vue";
+import HeaderElements from "./HeaderElements.vue";
 </script>
 
 <template>
@@ -8,8 +9,7 @@ import HeaderTitle from "./HeaderTitle.vue";
     <div class="wrap-container">
       <ContainerNav />
       <HeaderTitle />
-
-      SiteHeader
+      <HeaderElements />
     </div>
   </header>
 </template>
