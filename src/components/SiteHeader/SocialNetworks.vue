@@ -10,12 +10,14 @@ const socialNetworks = [
 <template>
   <ul class="inline-flex flex-wrap gap-[10px_18px] mt-2">
     <li v-for="(network, index) in socialNetworks" :key="index">
-      <img
-        :src="`/src/assets/images/${network.fileName}`"
-        :alt="$t(network.name)"
-        :title="$t(network.name)"
-        class="inline-block"
-      />
+      <a :href="network.url" target="_blank" rel="noopener noreferrer">
+        <img
+          :src="`/src/assets/images/${network.fileName}`"
+          :alt="$t(network.name)"
+          :title="$t(network.name)"
+          class="inline-block"
+        />
+      </a>
     </li>
   </ul>
 </template>
