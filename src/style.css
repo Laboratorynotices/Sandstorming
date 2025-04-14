@@ -19,8 +19,8 @@
   --color-text: #2b2a29;
 
   --color-border-accent: #000000;
-  --color-muted: rgba(255, 255, 255, 0.2);
-  --color-overlay: rgba(255, 255, 255, 0.3);
+  --color-muted: rgba(255, 255, 255, 0.4);
+  --color-overlay: rgba(255, 255, 255, 0.7);
 
   /* Тёмная тема */
   --color-primary-dark: #4ca4d8;
@@ -30,8 +30,8 @@
   --color-text-dark: #ffffff;
 
   --color-border-accent-dark: #ffffff;
-  --color-muted-dark: rgba(43, 42, 41, 0.2);
-  --color-overlay-dark: rgba(43, 42, 41, 0.3);
+  --color-muted-dark: rgba(43, 42, 41, 0.4);
+  --color-overlay-dark: rgba(43, 42, 41, 0.7);
 }
 
 /* Определение основных стилей */
