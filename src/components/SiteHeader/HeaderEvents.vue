@@ -10,6 +10,18 @@ const events = [
     date: "15–17 November 2025",
     location: "Dubai Dunes, UAE",
   },
+  {
+    imageName: "sand-surge-showdown.png",
+    title: "Sand Surge Showdown",
+    date: "23–25 May 2025",
+    location: "White Sands, New Mexico, USA",
+  },
+  {
+    imageName: "sandstorm-showdown.png",
+    title: "Sandstorm Showdown",
+    date: "13–15 July 2025",
+    location: "Great Sand Dunes, Colorado, USA",
+  },
 ];
 
 // Выбираем случайное событие из списка
