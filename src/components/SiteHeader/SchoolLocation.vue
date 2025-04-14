@@ -4,7 +4,7 @@ import AppButton from "../ui/AppButton.vue";
 </script>
 
 <template>
-  <AppButton :variant="ButtonVariant.Header1">{{
+  <AppButton class="mb-2.5 inline-block" :variant="ButtonVariant.Header1">{{
     $t("school location")
   }}</AppButton>
 </template>

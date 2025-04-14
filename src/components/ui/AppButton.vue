@@ -29,7 +29,11 @@ const variantClasses = computed(() => {
     case ButtonVariant.Header1:
       return "bg-text text-background header1";
     case ButtonVariant.Header2:
-      return "bg-overlay text-primary border-primary border-1 px-5 py-2.5 inline-block header2";
+      return "bg-muted text-primary border-primary border-1 px-5 py-2.5 inline-block header2";
+    case ButtonVariant.Event1:
+      return "bg-text text-background uppercase font-extrabold event1";
+    case ButtonVariant.Event2:
+      return "bg-overlay text-text border-text border-1 uppercase font-extrabold event2";
     default:
       return "";
   }
@@ -54,5 +58,13 @@ const variantClasses = computed(() => {
 .header1 {
   font-size: clamp(12px, 2vw, 14px);
   padding: clamp(2px, 1vw, 4px) clamp(4px, 2vw, 8px);
+}
+.event1 {
+  font-size: clamp(15px, 2.5vw, 32px);
+  padding: clamp(6px, 1.5vw, 10px) clamp(12px, 2.5vw, 20px);
+}
+.event2 {
+  font-size: clamp(15px, 2.5vw, 32px);
+  padding: clamp(6px, 1.5vw, 10px) clamp(12px, 2.5vw, 20px);
 }
 </style>
