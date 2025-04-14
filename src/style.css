@@ -60,7 +60,7 @@ body {
 
 /* Ограничиваем ширину контейнера */
 .wrap-container {
-  @apply mx-2 mb-2 pt-2;
+  @apply mx-2 mb-2 pt-2 2xl:max-w-[1720px] 2xl:mx-auto;
 }
 
 header {

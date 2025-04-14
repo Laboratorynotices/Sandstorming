@@ -15,7 +15,7 @@ const socialNetworks = [
           :src="`/src/assets/images/${network.fileName}`"
           :alt="$t(network.name)"
           :title="$t(network.name)"
-          class="inline-block"
+          class="inline-block h-[53px]"
         />
       </a>
     </li>

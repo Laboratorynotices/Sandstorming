@@ -57,3 +57,9 @@ const navItems = [
     </li>
   </ul>
 </template>
+
+<style lang="css" scoped>
+ul {
+  font-size: clamp(16px, 2vw, 22px);
+}
+</style>

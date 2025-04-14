@@ -13,7 +13,7 @@ const schoolBenefits = [
 </script>
 
 <template>
-  <ul class="flex flex-wrap gap-[10px_18px]">
+  <ul class="flex flex-wrap gap-[10px_18px] self-center">
     <li v-for="(benefit, index) in schoolBenefits" :key="index">
       <AppButton :variant="ButtonVariant.Header2">{{ $t(benefit) }}</AppButton>
     </li>

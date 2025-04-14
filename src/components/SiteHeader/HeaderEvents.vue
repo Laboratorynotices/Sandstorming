@@ -17,8 +17,12 @@ const randomEvent = events[Math.floor(Math.random() * events.length)];
 </script>
 
 <template>
-  <div class="event_block flex flex-col space-between mx-auto w-fit">
-    <div class="event_card bg-overlay mx-auto p-2.5 w-max">
+  <div
+    class="event_block flex flex-col justify-between mx-auto w-fit md:mx-0 md:justify-self-end"
+  >
+    <div
+      class="event_card bg-overlay mx-auto p-2.5 w-max rounded-sm md:pt-10 md:mr-0"
+    >
       <h1 class="font-extrabold">{{ randomEvent.title }}</h1>
       <h2 class="font-extrabold">{{ randomEvent.date }}</h2>
       <h3 class="font-extrabold">{{ randomEvent.location }}</h3>
@@ -32,7 +36,9 @@ const randomEvent = events[Math.floor(Math.random() * events.length)];
         class="max-h-[50vh] max-w-[85vw]"
       />
     </div>
-    <div class="button_row flex flex-wrap gap-[1em] justify-between my-2.5">
+    <div
+      class="button_row flex flex-wrap gap-[1em] justify-between my-2.5 md:mb-0"
+    >
       <AppButton href="#" :variant="ButtonVariant.Event1">{{
         $t("book now")
       }}</AppButton>
