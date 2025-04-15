@@ -16,10 +16,10 @@ defineProps({
 });
 // Массив пунктов меню
 const navItems = [
-  { id: 1, name: "home", path: "/" },
-  { id: 2, name: "who we are", path: "/about" },
-  { id: 3, name: "activities", path: "/activities" },
-  { id: 4, name: "review", path: "/review" },
+  { id: 1, name: "home", path: "#" },
+  { id: 2, name: "who we are", path: "#about" },
+  { id: 3, name: "activities", path: "#activities" },
+  { id: 4, name: "review", path: "#review" },
 ];
 </script>
 
