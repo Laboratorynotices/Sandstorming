@@ -5,7 +5,7 @@ import HeaderElements from "./HeaderElements.vue";
 </script>
 
 <template>
-  <header>
+  <header id="site-header">
     <div class="wrap-container">
       <ContainerNav />
       <HeaderTitle />

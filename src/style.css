@@ -63,12 +63,19 @@ body {
   @apply mx-2 mb-2 pt-2 2xl:max-w-[1720px] 2xl:mx-auto;
 }
 
-header {
+/* Шапка всего сайта */
+/* header */
+#site-header {
   @apply bg-[url("./assets/images/background-main.png")] 
     bg-no-repeat 
     bg-cover
     bg-[top_center]
     pb-4;
+}
+
+/* Шапка статьи */
+article > header {
+  @apply bg-none;
 }
 
 /* Элемент важен для SEO, но не должен отображаться на экране */
