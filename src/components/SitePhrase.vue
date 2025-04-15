@@ -13,7 +13,7 @@ const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
 </script>
 
 <template>
-  <div class="wrap-container">
+  <div class="wrap-container site-phrase">
     <blockquote class="font-extrabold w-2/3">{{ $t(randomPhrase) }}</blockquote>
   </div>
 </template>
