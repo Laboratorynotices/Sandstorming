@@ -36,7 +36,7 @@ const randomEvent = events[Math.floor(Math.random() * events.length)];
       class="event_card bg-overlay mx-auto p-2.5 w-max rounded-sm md:pt-10 md:mr-0"
     >
       <h1 class="font-extrabold">{{ randomEvent.title }}</h1>
-      <h2 class="font-extrabold">{{ randomEvent.date }}</h2>
+      <h3 class="font-extrabold">{{ randomEvent.date }}</h3>
       <h3 class="font-extrabold">{{ randomEvent.location }}</h3>
       <a class="font-extrabold uppercase underline underline-offset-2" href="#"
         >more info</a
@@ -63,7 +63,6 @@ const randomEvent = events[Math.floor(Math.random() * events.length)];
 
 <style lang="css" scoped>
 h1,
-h2,
 h3 {
   font-size: clamp(20px, 2.5vw, 32px);
 }
