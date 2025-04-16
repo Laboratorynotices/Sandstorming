@@ -58,6 +58,11 @@ body {
   font-family: "Rethink Sans", sans-serif;
 }
 
+h2 {
+  @apply font-extrabold;
+  font-size: clamp(20px, 4.5vw, 64px);
+}
+
 /* Ограничиваем ширину контейнера */
 .wrap-container {
   @apply mx-2 mb-2 pt-2 2xl:max-w-[1720px] 2xl:mx-auto;

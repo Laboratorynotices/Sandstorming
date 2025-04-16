@@ -15,12 +15,10 @@ const buttonPhrases = [
   <div class="wrap-container site-about" id="about">
     <article class="flex flex-col md:flex-row w-full">
       <!-- Левая колонка -->
-      <div
-        class="w-full md:w-1/2 flex flex-col justify-between md:pr-2.5 xl:w-2/3"
-      >
-        <header>
+      <div class="w-full md:w-1/2 flex flex-col justify-between md:pr-2.5">
+        <header class="xl:w-2/3">
           <h1 class="font-bold">About Us</h1>
-          <h2 class="font-extrabold">
+          <h2>
             {{ $t("Sandstorming School. Ghardaïa.") }}
           </h2>
         </header>
@@ -63,10 +61,6 @@ const buttonPhrases = [
 <style lang="css" scoped>
 .site-about {
   margin-bottom: clamp(50px, 11vw, 150px);
-}
-
-h2 {
-  font-size: clamp(20px, 4.5vw, 64px);
 }
 
 .activities_button {
