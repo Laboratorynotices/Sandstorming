@@ -82,14 +82,14 @@ const reviews = getRandomElements(reviewsAll, 4);
 </script>
 
 <template>
-  <article class="wrap-container review">
+  <article class="wrap-container reviews-container">
     <header class="w-full md:w-1/2 md:ml-auto">
       <h1 id="review">{{ $t("review") }}</h1>
       <h2>
         {{ $t("Join the team!") }}
       </h2>
     </header>
-    <section class="reviews mb-5 flex flex-col md:flex-row gap-[2em]">
+    <section class="reviews flex flex-col md:flex-row gap-[2em]">
       <article
         v-for="(review, index) in reviews"
         :key="index"
@@ -124,7 +124,7 @@ const reviews = getRandomElements(reviewsAll, 4);
 </template>
 
 <style lang="css" scoped>
-.review {
+.reviews-container {
   margin-bottom: clamp(50px, 11vw, 150px);
 }
 
