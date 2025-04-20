@@ -101,7 +101,12 @@ const reviews = getRandomElements(reviewsAll, 4);
           index % 2 === 0 ? 'lg:self-end lg:mt-[4vw]' : 'lg:self-start',
         ]"
       >
-        <img :src="review.img" :alt="review.name" class="review-img" />
+        <img
+          :src="review.img"
+          :alt="review.name"
+          class="review-img"
+          loading="lazy"
+        />
         <div class="review-text-container flex flex-col gap-[1em] xl:flex-row">
           <div class="review-text xl:basis-2/3">
             {{ review.review }}
