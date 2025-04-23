@@ -6,6 +6,7 @@ import HeaderElements from "./HeaderElements.vue";
 
 <template>
   <header id="site-header">
+    <div id="header-background-transparent"></div>
     <div class="wrap-container">
       <ContainerNav />
       <HeaderTitle />

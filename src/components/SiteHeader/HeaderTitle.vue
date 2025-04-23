@@ -4,7 +4,7 @@
   <img
     src="../../assets/images/header-title.png"
     alt="Sandstorming"
-    class="logo"
+    class="logo relative -z-20"
   />
   <h1 class="visually-hidden">Sandstorming school</h1>
 </template>
