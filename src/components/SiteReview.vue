@@ -18,39 +18,39 @@ const reviewsAll: Review[] = [
     date: "March 2025",
     review:
       "First ride felt like surfing a desert wave! Unreal vibes, I’m hooked.",
-    img: "/src/assets/images/reviews/1.png",
+    img: "1.png",
   },
   {
     name: "Lucía (España)",
     date: "Febrero 2025",
     review:
       "¡Nunca pensé que volar sobre arena fuera tan épico! Lo recomiendo 100%.",
-    img: "/src/assets/images/reviews/2.png",
+    img: "2.png",
   },
   {
     name: "Nassim (France)",
     date: "Avril 2025",
     review:
       "Du sable, du vent et des frissons. Meilleure expérience de ma vie !",
-    img: "/src/assets/images/reviews/3.png",
+    img: "3.png",
   },
   {
     name: "Takumi (日本)",
     date: "2025年1月",
     review: "砂の波に乗る感覚、マジでヤバい。次の休みも絶対来る！",
-    img: "/src/assets/images/reviews/4.png",
+    img: "4.png",
   },
   {
     name: "Mia (Deutschland)",
     date: "März 2025",
     review: "Wie Snowboarden, nur heißer! 😎 Sandstorming ist der neue Hype.",
-    img: "/src/assets/images/reviews/5.png",
+    img: "5.png",
   },
   {
     name: "Rafa (Brasil)",
     date: "Janeiro 2025",
     review: "Pura adrenalina no meio do nada! Areia + vento = explosão total.",
-    img: "/src/assets/images/reviews/6.png",
+    img: "6.png",
   },
 
   /*
@@ -78,7 +78,11 @@ const getRandomElements = <T,>(elements: T[], count: number): T[] => {
   return shuffled.slice(0, count);
 };
 
-const reviews = getRandomElements(reviewsAll, 4);
+// Получаем 4 случайных отзыва из общего списка, а так же генерируем пути для изображений
+const reviews = getRandomElements(reviewsAll, 4).map((review) => ({
+  ...review,
+  src: new URL(`../assets/images/reviews/${review.img}`, import.meta.url).href,
+}));
 </script>
 
 <template>
@@ -102,7 +106,7 @@ const reviews = getRandomElements(reviewsAll, 4);
         ]"
       >
         <img
-          :src="review.img"
+          :src="review.src"
           :alt="review.name"
           class="review-img"
           loading="lazy"

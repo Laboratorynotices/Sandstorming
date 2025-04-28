@@ -26,6 +26,11 @@ const events = [
 
 // Выбираем случайное событие из списка
 const randomEvent = events[Math.floor(Math.random() * events.length)];
+// Определяем путь к изображению события
+const imgSrc: string = new URL(
+  `../../assets/images/events/${randomEvent.imageName}`,
+  import.meta.url,
+).href;
 </script>
 
 <template>
@@ -42,7 +47,7 @@ const randomEvent = events[Math.floor(Math.random() * events.length)];
         >more info</a
       >
       <img
-        :src="`/src/assets/images/events/${randomEvent.imageName}`"
+        :src="imgSrc"
         :alt="randomEvent.title"
         :title="randomEvent.title"
         class="max-h-[50vh] max-w-[85vw]"
