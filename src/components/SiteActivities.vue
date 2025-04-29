@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ButtonVariant } from "../constants/button";
 import AppButton from "./ui/AppButton.vue";
+import { useI18n } from "vue-i18n";
+
+// Импортируем useI18n из vue-i18n для работы с локализацией
+// Сможем использовать его для получения текущего языка и перевода текста
+const { locale } = useI18n();
 
 // Перечисление преимуществ школы
 const schoolBenefits = [
@@ -44,7 +49,7 @@ const schoolBenefits = [
         :key="index"
         class="bg-overlay text-text border-text border rounded-full aspect-square w-full sm:w-1/2 md:w-1/5 flex justify-center items-center text-center"
       >
-        <span class="max-w-2/3">
+        <span :lang="locale" class="max-w-2/3 hyphens-auto">
           {{ $t(benefit) }}
         </span>
       </li>
