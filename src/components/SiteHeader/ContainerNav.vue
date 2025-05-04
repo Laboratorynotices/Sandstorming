@@ -5,16 +5,21 @@ import AppButton from "../ui/AppButton.vue";
 import NavLinks from "./NavLinks.vue";
 import BurgerButton from "./BurgerButton.vue";
 import SwitchLocale from "./SwitchLocale.vue";
+import { useWindowInnerWidthRem } from "../../composables/useWindowInnerWidthRem";
+
+// Получаем ширину окна в rem
+const { windowWidthRem } = useWindowInnerWidthRem();
 
 // Ширина экрана для MD версии
-// @TODO: вынести в конфиг и "привязать" в настройках tailwind
-const MD_BREAKPOINT = 768;
+// Получаем доступ к константе через import.meta.env
+const MD_BREAKPOINT: number = import.meta.env.MD_BREAKPOINT;
+
 // Состояние для отслеживания открытия/закрытия мобильного меню
 const isMenuOpen = ref(false);
 // Состояние для отслеживания видимости меню (для перехода из десктопа в мобильный)
 const hideMenu = ref(false);
 // Флаг для отслеживания текущего состояния отображения (мобильное/десктопное)
-const isMobile = ref(window.innerWidth < MD_BREAKPOINT);
+const isMobile = ref(true);
 // Функция для переключения состояния мобильного меню
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
@@ -28,7 +33,8 @@ const closeMenu = () => {
 // Функция для определения текущего размера экрана
 const checkScreenSize = () => {
   const wasMobile = isMobile.value;
-  isMobile.value = window.innerWidth < MD_BREAKPOINT;
+  isMobile.value = windowWidthRem.value < MD_BREAKPOINT;
+
   // Если переходим с мобильного на десктоп с открытым мобильным меню, закрываем его
   if (wasMobile && !isMobile.value && isMenuOpen.value) {
     isMenuOpen.value = false;
